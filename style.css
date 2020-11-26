@@ -1,0 +1,8 @@
+main {
+    display: flex;
+    overflow-y: hidden;
+}
+
+img {
+    margin: 20px;
+}
