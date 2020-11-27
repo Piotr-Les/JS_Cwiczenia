@@ -18,7 +18,6 @@ class RandomPicture{
 }
 class Gallery {
     constructor(addSelector, numberOfItems=6){
-        this.images = [];
         this.galleryContainer=addSelector;
         this.numberOfItems=numberOfItems;
     }
