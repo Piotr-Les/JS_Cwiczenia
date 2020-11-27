@@ -21,7 +21,6 @@ class Gallery {
         this.galleryContainer=addSelector;
         this.numberOfItems=numberOfItems;
     }
-    addImage=(image, container = this.temporaryContainer)=>container.push(image);
     showImage(index=0){
         if (index===this.numberOfItems) return
         let picture = new RandomPicture().GetImage();
