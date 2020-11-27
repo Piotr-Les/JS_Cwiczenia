@@ -13,51 +13,14 @@
       .container img {
         margin: 0 10px;
       }
-
       main {
-        /* display: flex; */
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        display: flex;
         overflow-y: hidden;
       }
-
-      /* main img {
-        margin: 20px;
-      } */
-
       main .pictureContainer {
-        background-color: orange;
-        height: 600px;
-      }
-      main .pictureContainer i {
-        position: absolute;
-        color: white;
-        font-size: 5rem;
-        transition: 0.5s linear;
-      }
-      main .pictureContainer i:hover {
-        color: black;
-        transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-      }
-
-      main .pictureContainer i:first-child {
-        left: 2vw;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      main .pictureContainer i:last-child {
-        right: 2vw;
-        top: 50%;
-        transform: translateY(-50%);
+        display: flex;
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
-      crossorigin="anonymous"
-    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Git Cwiczenia</title>
@@ -65,10 +28,7 @@
   </head>
   <body>
     <main>
-      <div class="pictureContainer">
-        <i class="fas fa-caret-left"></i>
-        <i class="fas fa-caret-right"></i>
-      </div>
+      <div class="pictureContainer"></div>
       <img src="https://picsum.photos/600/600" alt="" />
       <img src="https://picsum.photos/600/600" alt="" />
       <img src="https://picsum.photos/600/600" alt="" />

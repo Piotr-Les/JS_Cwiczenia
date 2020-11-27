@@ -1,3 +1,4 @@
+// ----[START]----oddzielam, żeby się nie myliło----[START]----
 const documentMain = document.querySelector('main');
 class RandomPicture{
     constructor(width = '600', height = '600'){
@@ -23,23 +24,19 @@ class RandomPicture{
         return images;
     }
 }
-
 class Gallery {
     constructor(){
         this.images = [];
-        this.width = window.innerWidth;
+        this.isLoaded = [];
+        this.width = 0;
         this.height =0;
-        this.imageInBoxNumber=0;
+        this.galleryContainer;
     }
     sizeSetter(){
         this.images.forEach((image)=>{
             if (image.height>this.height) this.height=image.height;
         })
-        let width = 0;
-        this.images.forEach((image)=>{
-            if(image.width>width) width=image.width;
-        })
-        this.imageInBoxNumber = Math.floor(this.width/width);    
+        this.images.forEach((image)=>this.width+=image.width);  
     }
     addImage=(image)=>this.images.push(image);
     addImages(images){
@@ -49,22 +46,23 @@ class Gallery {
         let galleryContainer = document.createElement('div');
         galleryContainer.classList = 'pictureContainer';
         this.sizeSetter();
-        galleryContainer.setAttribute('width',this.width);
-        galleryContainer.setAttribute('height',this.height);
-        // this.images.forEach((image) => galleryContainer.appendChild(image))
+        galleryContainer.setAttribute('width',this.width + 'px');
+        galleryContainer.setAttribute('height',this.height + 'px');
+        this.galleryContainer=galleryContainer;
         return galleryContainer;
     }
+    showImage(index=0){
+        if (index===this.images.length) return
+        this.images[index].addEventListener('load',(event)=>{
+            this.galleryContainer.appendChild(this.images[index]);
+            this.showImage(++index);
+        })
+    }
 }
-
 const pictures = new RandomPicture().GetImages();
-// documentMain.textContent='';
-// documentMain.appendChild(pictures[0]);
-// documentMain.appendChild(pictures[1]);
-// documentMain.appendChild(pictures[2]);
-// documentMain.appendChild(pictures[3]);
-// documentMain.appendChild(pictures[4]);
-// documentMain.appendChild(pictures[5]);
-
+documentMain.textContent='';
 const gallery = new Gallery();
 gallery.addImages(pictures);
-documentMain.appendChild(gallery.create())
+documentMain.appendChild(gallery.create());
+gallery.showImage();
+// ----[KONIEC]----oddzielam, żeby się nie myliło----[KONIEC]----
