@@ -1,5 +1,4 @@
 // ----[START]----oddzielam, żeby się nie myliło----[START]----
-const documentMain = document.querySelector('main');
 class RandomPicture{
     constructor(width = '600', height = '600'){
         this.width=width;
@@ -16,53 +15,25 @@ class RandomPicture{
         image.src = `http://lorempixel.com/${this.width}/${this.height}/${this.RandomCategory()}/`;
         return image;
     }
-    GetImages(imagesNumber = 6){
-        const images = [];
-        for (let i=0;i<imagesNumber;i++){
-            images.push(this.GetImage())
-        }
-        return images;
-    }
 }
 class Gallery {
-    constructor(){
+    constructor(addSelector, numberOfItems=6){
         this.images = [];
-        this.isLoaded = [];
-        this.width = 0;
-        this.height =0;
-        this.galleryContainer;
+        this.galleryContainer=addSelector;
+        this.numberOfItems=numberOfItems;
     }
-    sizeSetter(){
-        this.images.forEach((image)=>{
-            if (image.height>this.height) this.height=image.height;
-        })
-        this.images.forEach((image)=>this.width+=image.width);  
-    }
-    addImage=(image)=>this.images.push(image);
-    addImages(images){
-        images.forEach((image)=>this.addImage(image));
-    }
-    create(){
-        let galleryContainer = document.createElement('div');
-        galleryContainer.classList = 'pictureContainer';
-        this.sizeSetter();
-        galleryContainer.setAttribute('width',this.width + 'px');
-        galleryContainer.setAttribute('height',this.height + 'px');
-        this.galleryContainer=galleryContainer;
-        return galleryContainer;
-    }
+    addImage=(image, container = this.temporaryContainer)=>container.push(image);
     showImage(index=0){
-        if (index===this.images.length) return
-        this.images[index].addEventListener('load',(event)=>{
-            this.galleryContainer.appendChild(this.images[index]);
+        if (index===this.numberOfItems) return
+        let picture = new RandomPicture().GetImage();
+        picture.addEventListener('load',()=>{
+            this.galleryContainer.appendChild(picture);
             this.showImage(++index);
         })
     }
 }
-const pictures = new RandomPicture().GetImages();
+const documentMain = document.querySelector('main');
 documentMain.textContent='';
-const gallery = new Gallery();
-gallery.addImages(pictures);
-documentMain.appendChild(gallery.create());
+const gallery = new Gallery(documentMain);
 gallery.showImage();
 // ----[KONIEC]----oddzielam, żeby się nie myliło----[KONIEC]----
