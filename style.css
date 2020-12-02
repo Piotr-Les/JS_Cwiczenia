@@ -9,7 +9,7 @@ body{
 }
 #StaticG{
     background-color: whitesmoke;
-    width: 100%;
+    width: calc(100% - 20px);
     height: 300px;
     display: flex;
     flex-direction: row;
@@ -20,7 +20,8 @@ body{
     overflow-x: scroll;
     padding: 10px;
 }
-#i1{
-    margin-left: 10px;
+.img{
     margin-right: 10px;
+    margin-left: 10px;
 }
+
