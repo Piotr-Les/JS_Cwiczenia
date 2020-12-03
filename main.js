@@ -79,5 +79,24 @@ const gall = new Gallery(documentMain);
 gall.showImage();
 // ----[KONIEC]----oddzielam, żeby się nie myliło----[KONIEC]----
 //----[START]----Radek----[START]----
+const imgArray = [];
+	
+for (let index = 0; index < 5; index++) {
+    const imgRK = new Image();
+    imgRK.src = `http://lorempixel.com/400/200/sports/${index}/`;
+    imgArray.push(imgRK);
+}
+	
 
+const containerRK = document.querySelector('.RKcontainer');
+
+const PushToGallery = function (index = 1) {
+    if (index === imgArray.length) return;
+    let pic = imgArray[index - 1];
+    pic.addEventListener('load', () => {
+        containerRK.appendChild(pic);
+        PushToGallery(++index);
+    });
+};
+PushToGallery();
 //----[KONIEC]----Radek----[KONIEC]----
