@@ -75,8 +75,8 @@ class Gallery {
 }
 const documentMain = document.querySelector('main');
 documentMain.textContent = '';
-const gallery = new Gallery(documentMain);
-gallery.showImage();
+const gall = new Gallery(documentMain);
+gall.showImage();
 // ----[KONIEC]----oddzielam, żeby się nie myliło----[KONIEC]----
 //----[START]----Radek----[START]----
 
