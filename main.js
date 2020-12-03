@@ -23,9 +23,9 @@ class ImgContainer {
 		});
 	}
 }
-const cont = document.querySelector('.container');
-const gall = new ImgContainer(cont, 5);
-gall.displayImg();
+const container = document.querySelector('.container');
+const gallery = new ImgContainer(container, 5);
+gallery.displayImg();
 // ----[START]----oddzielam, żeby się nie myliło----[START]----
 class RandomPicture {
 	constructor(width = '600', height = '600') {
@@ -76,7 +76,7 @@ class Gallery {
 const documentMain = document.querySelector('main');
 documentMain.textContent = '';
 const gallery = new Gallery(documentMain);
-gall.showImage();
+gallery.showImage();
 // ----[KONIEC]----oddzielam, żeby się nie myliło----[KONIEC]----
 //----[START]----Radek----[START]----
 
