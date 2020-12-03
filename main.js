@@ -78,3 +78,6 @@ documentMain.textContent = '';
 const gallery = new Gallery(documentMain);
 gall.showImage();
 // ----[KONIEC]----oddzielam, żeby się nie myliło----[KONIEC]----
+//----[START]----Radek----[START]----
+
+//----[KONIEC]----Radek----[KONIEC]----
